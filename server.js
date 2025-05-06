@@ -1,10 +1,25 @@
 function fetchOnion() {
-  let url = document.getElementById("urlInput").value;
+  let input = document.getElementById("urlInput").value.trim();
 
-  // If the user enters a raw .onion URL, add .ws proxy
-  if (url.endsWith('.onion')) {
-    url = url.replace('.onion', '.onion.ws');
+  if (!input.startsWith("http")) {
+    input = "http://" + input;
   }
 
-  document.getElementById("output").src = url;
+  try {
+    const url = new URL(input);
+
+    if (!url.hostname.endsWith(".onion")) {
+      alert("Please enter a valid .onion address.");
+      return;
+    }
+
+    // Replace .onion with .onion.ws (Tor2web proxy)
+    const proxyUrl = url.href.replace(".onion", ".onion.ws");
+
+    // Open in new tab
+    window.open(proxyUrl, "_blank");
+
+  } catch (e) {
+    alert("Invalid URL. Please try again.");
+  }
 }
