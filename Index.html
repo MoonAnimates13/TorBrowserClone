@@ -1,21 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Tor Web Viewer</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Tor2Web Viewer</title>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: #ccc;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 5px;
+    }
+
+    input {
+      width: 300px;
+    }
+
+    button {
+      background-color: #444;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    p {
+      max-width: 600px;
+      font-size: 14px;
+      color: #999;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-  <div class="browser">
-    <div class="toolbar">
-      <input id="urlInput" type="text" placeholder="Enter .onion URL..." />
-      <button onclick="fetchOnion()">Go</button>
-    </div>
-    <div class="message">
-      <p>Note: Sites will open in a new tab via a public Tor2web proxy (e.g. onion.ws). This is not anonymous.</p>
-    </div>
-  </div>
-  <script src="script.js"></script>
+
+  <h1>Simple Tor2Web Browser</h1>
+  <input type="text" id="urlInput" placeholder="Enter .onion URL" />
+  <button id="goButton">Go</button>
+
+  <p>Note: This uses public Tor2web proxies to view .onion sites in a new tab. It's not anonymous and only works for public pages.</p>
+
+  <script>
+    document.getElementById("goButton").addEventListener("click", function () {
+      let input = document.getElementById("urlInput").value.trim();
+
+      if (!input.startsWith("http")) {
+        input = "http://" + input;
+      }
+
+      try {
+        const url = new URL(input);
+
+        if (!url.hostname.endsWith(".onion")) {
+          alert("Please enter a valid .onion address.");
+          return;
+        }
+
+        // Try .onion.pet as proxy
+        const proxyUrl = url.href.replace(".onion", ".onion.pet");
+
+        // Open the proxy site in a new tab
+        window.open(proxyUrl, "_blank");
+      } catch (e) {
+        alert("Invalid URL. Please try again.");
+      }
+    });
+  </script>
+
 </body>
 </html>
