@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Tor Browser</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="browser">
+    <div class="toolbar">
+      <input id="urlInput" type="text" placeholder="Enter .onion URL..." />
+      <button onclick="fetchOnion()">Go</button>
+    </div>
+    <iframe id="output" sandbox="allow-same-origin allow-scripts"></iframe>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
