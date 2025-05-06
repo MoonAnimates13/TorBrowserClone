@@ -5,33 +5,41 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .browser {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
+
 .toolbar {
   padding: 10px;
   background: #333;
   display: flex;
   gap: 10px;
 }
+
 .toolbar input {
   flex: 1;
-  padding: 8px;
+  padding: 10px;
   background: #222;
   border: none;
   color: #eee;
+  font-size: 16px;
 }
+
 .toolbar button {
-  padding: 8px 12px;
+  padding: 10px 20px;
   background: #444;
   border: none;
   color: #fff;
+  font-size: 16px;
   cursor: pointer;
 }
-iframe {
-  flex: 1;
-  border: none;
-  width: 100%;
+
+.message {
+  padding: 20px;
+  background-color: #2a2a2a;
+  color: #aaa;
+  font-size: 14px;
 }
