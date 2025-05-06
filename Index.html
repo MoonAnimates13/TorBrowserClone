@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Tor Browser</title>
+  <title>My Tor Web Viewer</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,7 +12,9 @@
       <input id="urlInput" type="text" placeholder="Enter .onion URL..." />
       <button onclick="fetchOnion()">Go</button>
     </div>
-    <iframe id="output" sandbox="allow-same-origin allow-scripts"></iframe>
+    <div class="message">
+      <p>Note: Sites will open in a new tab via a public Tor2web proxy (e.g. onion.ws). This is not anonymous.</p>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
