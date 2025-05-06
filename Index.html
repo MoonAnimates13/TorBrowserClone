@@ -1,78 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Tor2Web Viewer</title>
-  <style>
-    body {
-      background-color: #1e1e1e;
-      color: #ccc;
-      font-family: sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
-
-    input, button {
-      padding: 10px;
-      font-size: 16px;
-      margin: 5px;
-    }
-
-    input {
-      width: 300px;
-    }
-
-    button {
-      background-color: #444;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    p {
-      max-width: 600px;
-      font-size: 14px;
-      color: #999;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-
-  <h1>Simple Tor2Web Browser</h1>
-  <input type="text" id="urlInput" placeholder="Enter .onion URL" />
-  <button id="goButton">Go</button>
-
-  <p>Note: This uses public Tor2web proxies to view .onion sites in a new tab. It's not anonymous and only works for public pages.</p>
-
-  <script>
-    document.getElementById("goButton").addEventListener("click", function () {
-      let input = document.getElementById("urlInput").value.trim();
-
-      if (!input.startsWith("http")) {
-        input = "http://" + input;
-      }
-
-      try {
-        const url = new URL(input);
-
-        if (!url.hostname.endsWith(".onion")) {
-          alert("Please enter a valid .onion address.");
-          return;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabe Megee: The Magical Man</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&family=Rubik:wght@300&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Neue', sans-serif;
+            background: linear-gradient(to right, #FFB6C1, #87CEFA);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #333;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            width: 80%;
+            max-width: 500px;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        h1 {
+            font-family: 'Rubik', sans-serif;
+            color: #FF69B4;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: bounce 1.5s infinite alternate;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        button {
+            background-color: #FF69B4;
+            border: none;
+            color: white;
+            padding: 10px 30px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #FF1493;
+            transform: scale(1.1);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
-        // Try .onion.pet as proxy
-        const proxyUrl = url.href.replace(".onion", ".onion.pet");
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
 
-        // Open the proxy site in a new tab
-        window.open(proxyUrl, "_blank");
-      } catch (e) {
-        alert("Invalid URL. Please try again.");
-      }
-    });
-  </script>
-
+        .magic-sparkles {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: #FFD700;
+            animation: sparkle 1s infinite alternate;
+        }
+        
+        @keyframes sparkle {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gabe Megee: The Magical Tickle Master</h1>
+        <p>Meet Gabe Megee, the magical man who spreads joy with every gentle tickle!</p>
+        <button onclick="alert('Tickle Time!')">Start Your Tickle Adventure</button>
+        <div class="magic-sparkles">✨✨✨</div>
+    </div>
 </body>
 </html>
